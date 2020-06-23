@@ -36,6 +36,7 @@ function MyProvider({ children }) {
   });
   const { loading, data } = state;
 
+  // updating the list on scrolldown
   const load = () => {
     dispatch({ type: types.start });
 
@@ -100,7 +101,10 @@ function App() {
 
       {loading && <li style={{ background: "transparent" }}>Loading...</li>}
 
-      {!loading && (
+    
+      {
+      //flag for updating the list. once it is fully loaded it triggers the loading action  
+      !loading && (
         <li ref={setElement} style={{ background: "transparent" }}></li>
       )}
     </ul>

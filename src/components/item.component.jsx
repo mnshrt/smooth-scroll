@@ -1,13 +1,14 @@
 import React from 'react';
-import './item.styles.css';
+import {ListItem} from './item.styles.js';
+
 function Item({itemData:[date, info]}){
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
 
     return (
-        <li>
-            <h5>
+        <ListItem>
+            <h4>
             {date.toLocaleDateString('en-US', options)}
-            </h5>
+            </h4>
 
             <hr style={{
                 color:'grey',
@@ -16,7 +17,7 @@ function Item({itemData:[date, info]}){
             }}/>
 
             {info?<p>{info.toString()}</p>:null}
-        </li>
+        </ListItem>
     )
 }
 
