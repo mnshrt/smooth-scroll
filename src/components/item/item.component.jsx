@@ -3,7 +3,7 @@ import {ListItem} from './item.styles.js';
 
 
  
-function Item({date,todaysDate,itemData}){
+function Item({date, midDate, itemData, scrolled}){
     const myRef= useRef(null);
     useEffect(()=>{
         if(myRef.current){
@@ -11,36 +11,37 @@ function Item({date,todaysDate,itemData}){
         }
     })
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
-    console.log(itemData[0]||null)
+    
     return (
-        (todaysDate.toString().substring(0,15)===date.toString().substring(0,15))?(
-        <div ref={myRef}>
-
+        (midDate.toString().substring(0,15)===date.toString().substring(0,15))?(
+        <ListItem ref={myRef}>
+        
             <h4>
-            {"today>>>>>"+ date.toLocaleDateString('en-US', options)}
+            {date.toLocaleDateString('en-US', options)}
             </h4>        
-        {itemData[0]?<p>{itemData[0][1]}</p>:null} 
+            
             <hr style={{
                    color:'grey',
                    beackground:'grey',
                    height:'1px'
                }}/>
-            
-        </div>):(
-             <div>
-
+            {itemData[0]?<p>{itemData[0][1]}</p>:null} 
+       
+        </ListItem>
+):(<ListItem>
              <h4>
              {date.toLocaleDateString('en-US', options)}
              </h4>
- 
-            <br/>
-            {itemData[0]?<p>{itemData[0][1]}</p>:null}
-            <hr style={{
+             <hr style={{
                  color:'grey',
                  beackground:'grey',
                  height:'1px'
              }}/>
-         </div>
+            {itemData[0]?<p>{itemData[0][1]}</p>:null}
+        
+       
+     </ListItem>
+
         )
     )
 }

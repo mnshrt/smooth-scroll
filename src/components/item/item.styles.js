@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { device } from '../data/device';
+import { device } from '../../data/device';
 
 export const ListItem = styled.li`
 
